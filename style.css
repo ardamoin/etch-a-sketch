@@ -1,17 +1,13 @@
 .container {
-    max-width: auto;
     margin: 0 auto;
+    display: inline-block;
 }
 
 .column {
     background-color: lightgray;
     flex: 0 0 auto;
-    height: 2rem;
-    width: 2rem;
-    margin-bottom: 3px;
 }
 
 .row {
     display: flex;
-    gap: 3px;
 }
