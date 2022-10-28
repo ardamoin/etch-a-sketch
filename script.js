@@ -6,6 +6,7 @@ let width = containerSideLength / numberOfSquares;
 const myRange = document.querySelector("#my-range");
 const rangeValue = document.querySelector('.range-value');
 const colorSelector = document.querySelector("#color");
+const clearButton = document.querySelector('#clear');
 let selectedRGB = '#000000';
 
 myRange.value = numberOfSquares;
@@ -15,6 +16,8 @@ myRange.addEventListener('input', changeSize);
 colorSelector.addEventListener('input', function (){
     selectedRGB = this.value;
 })
+
+clearButton.addEventListener('click', changeSize);
 
 
 function applyColor() {
@@ -34,6 +37,11 @@ function changeSize() {
 
     makeGrid();
 
+    /*
+        this function deletes the existing grid and
+        creates a new, blank one with the slider input 
+        as the number of squares contained within the grid
+     */
 }
 
 
