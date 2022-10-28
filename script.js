@@ -5,15 +5,20 @@ let height = containerSideLength / numberOfSquares;
 let width = containerSideLength / numberOfSquares;
 const myRange = document.querySelector("#my-range");
 const rangeValue = document.querySelector('.range-value');
+const colorSelector = document.querySelector("#color");
+let selectedRGB = '#000000';
 
 myRange.value = numberOfSquares;
 rangeValue.textContent = `${myRange.value} x ${myRange.value}`;
 
 myRange.addEventListener('input', changeSize);
+colorSelector.addEventListener('input', function (){
+    selectedRGB = this.value;
+})
 
 
-function changeColor(e) {
-    this.style.backgroundColor = 'red'
+function applyColor() {
+    this.style.backgroundColor = selectedRGB;
 }
 
 
@@ -44,7 +49,7 @@ function makeGrid() {
             column.style.height = `${height}px`;
             column.style.width = `${width}px`;
     
-            column.addEventListener('mousedown', changeColor);
+            column.addEventListener('mousedown', applyColor);
             row.appendChild(column);
         }   
     
