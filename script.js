@@ -14,8 +14,12 @@ const rainbowBox = document.querySelector('#rainbow');
 const eraseBox = document.querySelector('#erase');
 const clearButton = document.querySelector('#clear');
 
+let clickAndHold = false;
+
 myRange.value = numberOfSquares;
 rangeValue.textContent = `${myRange.value} x ${myRange.value}`;
+
+containerDiv.addEventListener('mouseleave', () => {clickAndHold = false});
 
 myRange.addEventListener('input', changeSize);
 colorSelector.addEventListener('input', function (){
@@ -46,18 +50,18 @@ clearButton.addEventListener('click', function() {
 });
 
 
-function applyColor() {
+function applyColor(square) {
     if (!rainbowBox.checked && !eraseBox.checked) {
-        this.style.backgroundColor = selectedRGB;
+        square.style.backgroundColor = selectedRGB;
     } else if (rainbowBox.checked && !eraseBox.checked) {
         let randomR = Math.ceil(Math.random()*255);
         let randomG = Math.ceil(Math.random()*255);
         let randomB = Math.ceil(Math.random()*255);
 
-        this.style.backgroundColor = `rgb(${randomR},${randomG}, ${randomB})`;
+        square.style.backgroundColor = `rgb(${randomR},${randomG}, ${randomB})`;
         //to apply random colors for rainbow mode
     } else {
-        this.style.backgroundColor = 'lightgray';
+        square.style.backgroundColor = 'lightgray';
     }
     
 }
@@ -70,8 +74,8 @@ function changeSize() {
     width = containerSideLength / numberOfSquares;
 
     for (const node of containerDiv.querySelectorAll("*")) {
-        node.remove();
-    } // to remove old grid
+        node.remove(); // to remove old grid
+    } 
 
     makeGrid();
 
@@ -95,7 +99,23 @@ function makeGrid() {
             column.style.height = `${height}px`;
             column.style.width = `${width}px`;
     
-            column.addEventListener('mousedown', applyColor);
+            column.addEventListener('mousedown', function() {
+                clickAndHold = true;
+                applyColor(this);
+            });
+
+            column.addEventListener('mouseover', function () {
+                if (clickAndHold) {
+                    applyColor(this);
+                }
+            });
+
+            column.addEventListener('mouseup', (e) => {
+                clickAndHold = false;
+                console.log(e.type);
+            })
+
+            
             row.appendChild(column);
         }   
     
