@@ -3,11 +3,16 @@ const containerSideLength = 500;
 let numberOfSquares = 16;
 let height = containerSideLength / numberOfSquares;
 let width = containerSideLength / numberOfSquares;
+
 const myRange = document.querySelector("#my-range");
 const rangeValue = document.querySelector('.range-value');
+
 const colorSelector = document.querySelector("#color");
+let selectedRGB = colorSelector.value;
+
+const rainbowBox = document.querySelector('#rainbow');
+const eraseBox = document.querySelector('#erase');
 const clearButton = document.querySelector('#clear');
-let selectedRGB = '#000000';
 
 myRange.value = numberOfSquares;
 rangeValue.textContent = `${myRange.value} x ${myRange.value}`;
@@ -21,7 +26,19 @@ clearButton.addEventListener('click', changeSize);
 
 
 function applyColor() {
-    this.style.backgroundColor = selectedRGB;
+    if (!rainbowBox.checked && !eraseBox.checked) {
+        this.style.backgroundColor = selectedRGB;
+    } else if (rainbowBox.checked && !eraseBox.checked) {
+        let randomR = Math.ceil(Math.random()*255);
+        let randomG = Math.ceil(Math.random()*255);
+        let randomB = Math.ceil(Math.random()*255);
+
+        this.style.backgroundColor = `rgb(${randomR},${randomG}, ${randomB})`;
+        //to apply random colors for rainbow mode
+    } else {
+        this.style.backgroundColor = 'lightgray';
+    }
+    
 }
 
 
