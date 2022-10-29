@@ -22,6 +22,18 @@ colorSelector.addEventListener('input', function (){
     selectedRGB = this.value;
 })
 
+rainbowBox.addEventListener('click', function() {
+    if (eraseBox.checked) {
+        eraseBox.checked = false;
+    }
+})
+
+eraseBox.addEventListener('click', function() {
+    if (rainbowBox.checked) {
+        rainbowBox.checked = false;
+    }
+})
+
 clearButton.addEventListener('click', changeSize);
 
 
