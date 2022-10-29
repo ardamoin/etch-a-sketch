@@ -22,6 +22,7 @@ colorSelector.addEventListener('input', function (){
     selectedRGB = this.value;
 })
 
+//------------------------------------------------------------
 rainbowBox.addEventListener('click', function() {
     if (eraseBox.checked) {
         eraseBox.checked = false;
@@ -33,8 +34,16 @@ eraseBox.addEventListener('click', function() {
         rainbowBox.checked = false;
     }
 })
+/*
+These event listeners prevent erase and rainbow to be checked
+simultaneously
+*/
+//------------------------------------------------------------
 
-clearButton.addEventListener('click', changeSize);
+clearButton.addEventListener('click', function() {
+    changeSize();
+    eraseBox.checked = false;
+});
 
 
 function applyColor() {
