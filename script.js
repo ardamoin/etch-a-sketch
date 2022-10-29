@@ -24,6 +24,7 @@ containerDiv.addEventListener('mouseleave', () => {clickAndHold = false});
 myRange.addEventListener('input', changeSize);
 colorSelector.addEventListener('input', function (){
     selectedRGB = this.value;
+    rainbowBox.checked = false;
 })
 
 //------------------------------------------------------------
@@ -39,7 +40,7 @@ eraseBox.addEventListener('click', function() {
     }
 })
 /*
-These event listeners prevent erase and rainbow to be checked
+These event listeners prevent erase and rainbow from being checked
 simultaneously
 */
 //------------------------------------------------------------
@@ -61,7 +62,7 @@ function applyColor(square) {
         square.style.backgroundColor = `rgb(${randomR},${randomG}, ${randomB})`;
         //to apply random colors for rainbow mode
     } else {
-        square.style.backgroundColor = 'lightgray';
+        square.style.backgroundColor = 'white';
     }
     
 }
