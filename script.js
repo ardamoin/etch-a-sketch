@@ -24,19 +24,31 @@ containerDiv.addEventListener('mouseleave', () => {clickAndHold = false});
 myRange.addEventListener('input', changeSize);
 colorSelector.addEventListener('input', function (){
     selectedRGB = this.value;
-    rainbowBox.checked = false;
+    rainbowBox.classList.remove('active');
 })
 
 //------------------------------------------------------------
 rainbowBox.addEventListener('click', function() {
     if (eraseBox.checked) {
-        eraseBox.checked = false;
+        eraseBox.classList.remove('active');
+    }
+
+    if (!this.classList.contains('active')) {
+        this.classList.add('active');
+    } else {
+        this.classList.remove('active');
     }
 })
 
 eraseBox.addEventListener('click', function() {
     if (rainbowBox.checked) {
-        rainbowBox.checked = false;
+        rainbowBox.classList.remove('active');
+    }
+    
+    if (!this.classList.contains('active')) {
+        this.classList.add('active');
+    } else {
+        this.classList.remove('active');
     }
 })
 /*
@@ -52,9 +64,9 @@ clearButton.addEventListener('click', function() {
 
 
 function applyColor(square) {
-    if (!rainbowBox.checked && !eraseBox.checked) {
+    if (!rainbowBox.classList.contains('active') && !eraseBox.classList.contains('active')) {
         square.style.backgroundColor = selectedRGB;
-    } else if (rainbowBox.checked && !eraseBox.checked) {
+    } else if (rainbowBox.classList.contains('active') && !eraseBox.classList.contains('active')) {
         let randomR = Math.ceil(Math.random()*255);
         let randomG = Math.ceil(Math.random()*255);
         let randomB = Math.ceil(Math.random()*255);

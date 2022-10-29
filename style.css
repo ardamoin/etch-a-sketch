@@ -81,3 +81,20 @@ input[type=color]::-webkit-color-swatch {
 .row {
     display: flex;
 }
+
+button {
+    background-color: transparent;
+    border-style: solid;
+    border-color: #143d59;
+    color: #143d59;
+    width: 100%;
+    border-radius: 5px;
+    border-width: 1px;
+    transition: 0.3s;
+    padding: 10px;
+}
+
+button.active, button:hover {
+    color: white;
+    background-color: #143d59;
+}
