@@ -6,21 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="assets/icon.png">
 </head>
 <body>
     <h1>Etch-A-Sketch</h1>
     <div class="content">
         <div class="options">
-            <input type="range" id="my-range" min="1" max="64">
-            <div class="range-value"></div>
             <input type="color" id="color">
             <button id="rainbow" type="checkbox" class="">Rainbow mode</button>
             <button id="erase" type="checkbox" class="">Erase mode</button>
             <button id="clear">Clear</button>
+            <div class="range-value"></div>
+            <input type="range" id="my-range" min="1" max="64">      
         </div>
         
         <div class="container"></div>
     </div>
+
+    <div class="footer">Copyright © 2022 ardamoin <a href="https://github.com/ardamoin" target="_blank"><i class="fa fa-github" style="color: white;"></i></a></div>
     
 </body>
 <script src="script.js"></script>
