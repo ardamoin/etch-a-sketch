@@ -14,6 +14,7 @@ h1 {
 
 .content {
     display: flex;
+    gap: 50px;
 }
 
 .options {
@@ -70,7 +71,7 @@ input[type=color]::-webkit-color-swatch {
 .container {
     margin: 0 auto;
     display: inline-block;
-    align-content: flex-start;
+    
 }
 
 .column {

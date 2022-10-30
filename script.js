@@ -29,7 +29,7 @@ colorSelector.addEventListener('input', function (){
 
 //------------------------------------------------------------
 rainbowBox.addEventListener('click', function() {
-    if (eraseBox.checked) {
+    if (eraseBox.classList.contains('active')) {
         eraseBox.classList.remove('active');
     }
 
@@ -41,10 +41,10 @@ rainbowBox.addEventListener('click', function() {
 })
 
 eraseBox.addEventListener('click', function() {
-    if (rainbowBox.checked) {
+    if (rainbowBox.classList.contains('active')) {
         rainbowBox.classList.remove('active');
     }
-    
+
     if (!this.classList.contains('active')) {
         this.classList.add('active');
     } else {
@@ -59,7 +59,7 @@ simultaneously
 
 clearButton.addEventListener('click', function() {
     changeSize();
-    eraseBox.checked = false;
+    eraseBox.classList.remove('active');
 });
 
 
